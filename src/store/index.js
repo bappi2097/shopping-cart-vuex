@@ -13,12 +13,27 @@ export default new Vuex.Store({
   getters: {
     availableProducts(state, getters) {
       return state.products.filter(product => product.inventory > 0);
+    },
+    cartProducts(state) {
+      return state.cart.map(cartItem => {
+        let product = state.products.find(product => cartItem.id == product.id);
+        return {
+          title: product.title,
+          price: product.price,
+          quantity: cartItem.quantity
+        };
+      });
+    },
+    cartTotal(state, getters) {
+      return getters.cartProducts.reduce(
+        (total, product) => total + product.quantity * product.price,
+        0
+      );
     }
   },
 
   actions: {
     fetchProducts({ commit }) {
-      //
       return new Promise((resolve, reject) => {
         shop.getProducts(products => {
           commit("setProducts", products);
@@ -28,7 +43,7 @@ export default new Vuex.Store({
     },
     addProdectToCart(context, product) {
       if (product.inventory > 0) {
-        let cartItem = context.state.cart.filter(item => item.id == product.id);
+        let cartItem = context.state.cart.find(item => item.id == product.id);
         if (!cartItem) {
           context.commit("pushProductToCart", product.id);
         } else {

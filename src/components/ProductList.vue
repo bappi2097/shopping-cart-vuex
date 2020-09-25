@@ -8,7 +8,9 @@
     />
     <ul v-else>
       <li v-for="product of products">
-        {{ product.title }}-{{ product.price }}-{{ product.inventory }}
+        {{ product.title }}-{{ product.price | currency }}-{{
+          product.inventory
+        }}
         <button @click="addProdectToCart(product)">Add To Cart</button>
       </li>
     </ul>
