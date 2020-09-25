@@ -1,10 +1,16 @@
-# shopping-cart
+<div align="center">
 
-> A Vue.js project
+# [Shopping Cart]() 😍
 
-## Build Setup
+<div align="left">
 
-``` bash
+> **In this repo, I will try to build a shopping cart using Vue & Vuex. For just state management learning purpose, I will make it shorter and simple.**
+
+</div>
+
+## Build Setup :rocket:
+
+```bash
 # install dependencies
 npm install
 
@@ -18,4 +24,9 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+**If facing any problem feel free to contact me❤️**
+[Bappi Saha](https://bappi2097.github.io/)
+
+</div>
+
+---
