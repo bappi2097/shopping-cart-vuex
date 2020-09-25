@@ -1,13 +1,14 @@
 import Vuex from "vuex";
 import Vue from "vue";
-import shop from "../api/shop";
+import actions from "./actions";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     products: [],
-    cart: []
+    cart: [],
+    checkoutStatus: null
   },
 
   getters: {
@@ -29,30 +30,15 @@ export default new Vuex.Store({
         (total, product) => total + product.quantity * product.price,
         0
       );
+    },
+    productIsInStock(state) {
+      return product => {
+        return product.inventory > 0;
+      };
     }
   },
 
-  actions: {
-    fetchProducts({ commit }) {
-      return new Promise((resolve, reject) => {
-        shop.getProducts(products => {
-          commit("setProducts", products);
-          resolve();
-        });
-      });
-    },
-    addProdectToCart(context, product) {
-      if (product.inventory > 0) {
-        let cartItem = context.state.cart.find(item => item.id == product.id);
-        if (!cartItem) {
-          context.commit("pushProductToCart", product.id);
-        } else {
-          context.commit("incrementItemQuantity", cartItem);
-        }
-        context.commit("decrementProductInventory", product);
-      }
-    }
-  },
+  actions: actions,
 
   mutations: {
     setProducts(state, products) {
@@ -69,6 +55,12 @@ export default new Vuex.Store({
     },
     decrementProductInventory(state, product) {
       product.inventory--;
+    },
+    setCheckoutStatus(state, status) {
+      state.checkoutStatus = status;
+    },
+    emptyCart(state) {
+      state.cart = [];
     }
   }
 });
