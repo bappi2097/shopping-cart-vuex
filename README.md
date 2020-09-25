@@ -10,6 +10,8 @@
 
 ## Build Setup :rocket:
 
+<div align="left">
+
 ```bash
 # install dependencies
 npm install
@@ -24,7 +26,9 @@ npm run build
 npm run build --report
 ```
 
-**If facing any problem feel free to contact me❤️**
+</div>
+
+**If facing any problem feel free to contact me❤️**  
 [Bappi Saha](https://bappi2097.github.io/)
 
 </div>
