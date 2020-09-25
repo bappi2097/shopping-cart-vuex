@@ -4,7 +4,7 @@
 
 <div align="left">
 
-> **In this repo, I will try to build a shopping cart using Vue & Vuex. For just state management learning purpose, I will make it shorter and simple.**
+> **In this repo, I will try to build a shopping cart using Vue & Vuex. For just state management learning purposes, I will make it shorter and simple.**
 
 </div>
 
