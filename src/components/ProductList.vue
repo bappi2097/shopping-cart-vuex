@@ -30,10 +30,10 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      products: (state) => state.products,
+    ...mapState("products", {
+      products: (state) => state.items,
     }),
-    ...mapGetters({
+    ...mapGetters("products", {
       productIsInStock: "productIsInStock",
     }),
   },
@@ -42,8 +42,10 @@ export default {
     this.fetchProducts().then(() => (this.loading = false));
   },
   methods: {
-    ...mapActions({
+    ...mapActions("products", {
       fetchProducts: "fetchProducts",
+    }),
+    ...mapActions("cart", {
       addProdectToCart: "addProdectToCart",
     }),
   },
